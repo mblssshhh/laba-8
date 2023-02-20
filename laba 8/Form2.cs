@@ -14,22 +14,12 @@ namespace laba_8
 {
     public partial class Form2 : Form
     {
-        Bitmap bitmap; //= new Bitmap(pictureBox.ClientSize.Width, pictureBox.ClientSize.Height);
-        Pen pen = new Pen(Color.Black, 5);
-        static class Init
-        {
-            public static Bitmap bitmap;
-            public static PictureBox pictureBoxP;
-            public static Pen pen;
-        }
-        public Form2()
+        PointF[] pointFs;
+        public Form2(ref PointF[] pointFs)
         {
             InitializeComponent();
-            this.bitmap = new Bitmap(pictureBoxP.ClientSize.Width, pictureBoxP.ClientSize.Height);
-            this.pen = new Pen(Color.Black, 5);
-            Init.bitmap = this.bitmap;
-            Init.pictureBoxP = pictureBoxP;
-            Init.pen = this.pen;
+            this.pointFs = pointFs;
+            
         }
 
 
@@ -39,7 +29,7 @@ namespace laba_8
         }
 
 
-      
+
 
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -58,12 +48,12 @@ namespace laba_8
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Polygon po = new Polygon();
-            po.Draw(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text));
-
+            
+            Polygon po = new Polygon(pointFs);
         }
 
-        private void pictureBoxP_Click(object sender, EventArgs e)
+
+        private void textBoxN_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -17,7 +17,22 @@ namespace laba_8
     }
     public class Rectangle : Figure
     {
-        public override void Draw(int x, int y, int w, int h)
+        public Rectangle(int x, int y, int w, int h)
+         {
+         this.x = x;
+         this.y = y;
+         this.w = w;
+         this.h = h;
+         }
+         public Rectangle()
+         {
+         this.x = 0;
+         this.y = 0;
+         this.w = 0;
+         this.h = 0;
+         }
+
+    public override void Draw()
         {
             Pen line = new Pen(Color.Black, 5);
             Graphics g = Graphics.FromImage(Init.bitmap);
@@ -28,7 +43,21 @@ namespace laba_8
 
     public class Elips : Figure
     {
-        public override void Draw(int x, int y, int w, int h)
+        public Elips(int x, int y, int w, int h)
+        {
+            this.x = x;
+            this.y = y;
+            this.w = w;
+            this.h = h;
+        }
+        public Elips()
+        {
+            this.x = 0;
+            this.y = 0;
+            this.w = 0;
+            this.h = 0;
+        }
+        public override void Draw()
         {
             Pen line = new Pen(Color.Black, 5);
             Graphics g = Graphics.FromImage(Init.bitmap);
@@ -39,6 +68,28 @@ namespace laba_8
 
     public class Polygon : Figure
     {
+        PointF[] pointFs;
+        public Polygon(PointF[] pointFs)
+        {
+            this.pointFs = pointFs;
+        }
+        public Polygon()
+        {
+            this.x = 0;
+            this.y = 0;
+            this.n = 0;
+        }
+        public override void Draw()
+        {
+            Pen line = new Pen(Color.Black, 5);
+            Graphics g = Graphics.FromImage(Init.bitmap);
+            g.DrawPolygon(line, pointFs);
+            Init.pictureBox.Image = Init.bitmap;
+        }
+        
 
     }
+
 }
+
+

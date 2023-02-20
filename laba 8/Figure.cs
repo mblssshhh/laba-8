@@ -15,9 +15,10 @@ namespace laba_8
             public int y;
             public int w;
             public int h;
+            public int n;
 
 
-            public virtual void Draw(int x, int y, int w, int h)
+            public virtual void Draw()
             {
 
             }
@@ -30,7 +31,10 @@ namespace laba_8
 
             }
 
-            public void DeleteF(Figure figure, bool flag = true) { }
+            public void DeleteF(Figure figure, bool flag = true) 
+            {
+                
+            }
         }
     }
 

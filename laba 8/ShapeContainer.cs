@@ -10,7 +10,6 @@ namespace laba_8
     {
         public static List<Figure> figureList;
         public ShapeContainer()
-
         {
             figureList = new List<Figure>();
         }

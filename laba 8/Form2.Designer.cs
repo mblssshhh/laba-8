@@ -34,8 +34,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBoxP = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxP)).BeginInit();
+            this.textBoxN = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,22 +90,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBoxP
+            // textBoxN
             // 
-            this.pictureBoxP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxP.Location = new System.Drawing.Point(195, 12);
-            this.pictureBoxP.Name = "pictureBoxP";
-            this.pictureBoxP.Size = new System.Drawing.Size(302, 225);
-            this.pictureBoxP.TabIndex = 7;
-            this.pictureBoxP.TabStop = false;
-            this.pictureBoxP.Click += new System.EventHandler(this.pictureBoxP_Click);
+            this.textBoxN.Location = new System.Drawing.Point(168, 9);
+            this.textBoxN.Name = "textBoxN";
+            this.textBoxN.Size = new System.Drawing.Size(100, 22);
+            this.textBoxN.TabIndex = 6;
+            this.textBoxN.TextChanged += new System.EventHandler(this.textBoxN_TextChanged);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 318);
-            this.Controls.Add(this.pictureBoxP);
+            this.Controls.Add(this.textBoxN);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -117,7 +114,6 @@
             this.Name = "Form2";
             this.Text = "Polygon";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,6 +127,6 @@
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBoxP;
+        private System.Windows.Forms.TextBox textBoxN;
     }
 }
