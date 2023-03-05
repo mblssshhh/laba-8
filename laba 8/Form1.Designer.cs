@@ -44,12 +44,12 @@
             this.checkBoxElips = new System.Windows.Forms.CheckBox();
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
             this.checkBoxPolygon = new System.Windows.Forms.CheckBox();
-            this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
             this.buttonMy = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.move1 = new System.Windows.Forms.TextBox();
             this.move2 = new System.Windows.Forms.TextBox();
             this.moveBut = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -201,24 +201,13 @@
             // checkBoxPolygon
             // 
             this.checkBoxPolygon.AutoSize = true;
-            this.checkBoxPolygon.Location = new System.Drawing.Point(259, 342);
+            this.checkBoxPolygon.Location = new System.Drawing.Point(237, 342);
             this.checkBoxPolygon.Name = "checkBoxPolygon";
             this.checkBoxPolygon.Size = new System.Drawing.Size(79, 20);
             this.checkBoxPolygon.TabIndex = 16;
             this.checkBoxPolygon.Text = "Polygon";
             this.checkBoxPolygon.UseVisualStyleBackColor = true;
             this.checkBoxPolygon.CheckedChanged += new System.EventHandler(this.checkBoxPolygon_CheckedChanged);
-            // 
-            // checkBoxTriangle
-            // 
-            this.checkBoxTriangle.AutoSize = true;
-            this.checkBoxTriangle.Location = new System.Drawing.Point(259, 368);
-            this.checkBoxTriangle.Name = "checkBoxTriangle";
-            this.checkBoxTriangle.Size = new System.Drawing.Size(79, 20);
-            this.checkBoxTriangle.TabIndex = 17;
-            this.checkBoxTriangle.Text = "Triangle";
-            this.checkBoxTriangle.UseVisualStyleBackColor = true;
-            this.checkBoxTriangle.CheckedChanged += new System.EventHandler(this.checkBoxTriangle_CheckedChanged);
             // 
             // buttonMy
             // 
@@ -233,7 +222,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(466, 368);
+            this.label5.Location = new System.Drawing.Point(482, 370);
             this.label5.MinimumSize = new System.Drawing.Size(100, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
@@ -267,17 +256,26 @@
             this.moveBut.UseVisualStyleBackColor = true;
             this.moveBut.Click += new System.EventHandler(this.moveBut_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(598, 25);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 23;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.moveBut);
             this.Controls.Add(this.move2);
             this.Controls.Add(this.move1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonMy);
-            this.Controls.Add(this.checkBoxTriangle);
             this.Controls.Add(this.checkBoxPolygon);
             this.Controls.Add(this.checkBoxCircle);
             this.Controls.Add(this.checkBoxElips);
@@ -321,12 +319,12 @@
         private System.Windows.Forms.CheckBox checkBoxElips;
         private System.Windows.Forms.CheckBox checkBoxCircle;
         private System.Windows.Forms.CheckBox checkBoxPolygon;
-        private System.Windows.Forms.CheckBox checkBoxTriangle;
         private System.Windows.Forms.Button buttonMy;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox move1;
         private System.Windows.Forms.TextBox move2;
         private System.Windows.Forms.Button moveBut;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

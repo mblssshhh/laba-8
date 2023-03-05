@@ -37,5 +37,5 @@ namespace laba_8
             }
             
         }
-    }
+}
 

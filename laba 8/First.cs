@@ -77,9 +77,10 @@ namespace laba_8
         }
     }
 
-    public class Polygon : Figure
+    class Polygon : Figure
     {
-        PointF[] pointFs;
+        public PointF[] pointFs;
+
         public Polygon(PointF[] pointFs)
         {
             this.pointFs = pointFs;
@@ -88,17 +89,17 @@ namespace laba_8
         {
             this.x = 0;
             this.y = 0;
-            this.n = 0;
+        }
+        public void DrawPolygon(System.Drawing.Pen pen, System.Drawing.PointF[] pointFs)
+        {
         }
         public override void Draw()
         {
-            Pen line = new Pen(Color.Black, 5);
+            Pen pol = new Pen(Color.Black, 5);
             Graphics g = Graphics.FromImage(Init.bitmap);
-            g.DrawPolygon(line, pointFs);
+            g.DrawPolygon(pol, pointFs);
             Init.pictureBox.Image = Init.bitmap;
         }
-        
-
     }
 
 }

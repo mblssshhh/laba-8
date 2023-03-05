@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,11 +22,12 @@ namespace laba_8
     {
 
 
-        Bitmap bitmap; //= new Bitmap(pictureBox.ClientSize.Width, pictureBox.ClientSize.Height);
+        Bitmap bitmap; 
         Pen pen = new Pen(Color.Black, 5);
-        PointF[] pointFs;
-        Polygon polygon;
-       
+        Rectangle re = new Rectangle();
+        List<Rectangle> ListOfRec = new List<Rectangle>();
+        List<Square> ListOfSqu = new List<Square>();
+
         public Form1()
         {
             InitializeComponent();
@@ -90,8 +92,12 @@ namespace laba_8
                     Rectangle re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                     re.Draw();
                     ShapeContainer.AddFigure(re);
-
-                }
+                    
+                    ListOfRec.Add(re);
+                    comboBox1.DataSource = ListOfRec;
+                    comboBox1.DisplayMember = "Rectangle";
+                    comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            }
             
 
 
@@ -103,7 +109,12 @@ namespace laba_8
                 Square sq = new Square(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 ShapeContainer.AddFigure(sq);
                 sq.Draw();
-                
+
+                ListOfRec.Add(sq);
+                comboBox1.DataSource = ListOfSqu;
+                comboBox1.DisplayMember = "Square";
+                comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+
             }
 
 
@@ -169,7 +180,13 @@ namespace laba_8
         {
             if (RectagleCheck.Checked == true)
             {
-                //DeleteF(re, false);
+                DeleteF((Figure)comboBox1.SelectedItem, false);
+                ListOfRec.Remove((Rectangle)comboBox1.SelectedItem);
+            }
+            if (checkBoxSquare.Checked == true)
+            {
+                DeleteF((Figure)comboBox1.SelectedItem, false);
+                ListOfSqu.Remove((Square)comboBox1.SelectedItem);
             }
         }
 
@@ -192,11 +209,8 @@ namespace laba_8
         {
             if (checkBoxPolygon.Checked == true)
             {
-                Form ifrm = new Form2(ref pointFs);
+                Form ifrm = new Form2(ref Form2.pointFs);
                 ifrm.Show();
-                /*polygon = new Polygon(pointFs);
-                polygon.Draw();
-                ShapeContainer.AddFigure(polygon);*/
             }
             
         }
@@ -243,8 +257,13 @@ namespace laba_8
         {
             if (RectagleCheck.Checked == true)
             {
-                //re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text));
+                re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text));
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

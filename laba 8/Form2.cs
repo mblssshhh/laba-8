@@ -9,16 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static laba_8.Form1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace laba_8
 {
     public partial class Form2 : Form
     {
-        PointF[] pointFs;
+        public static PointF[] pointFs;
+        public static int x, y, n = 0, r;
+        static Polygon polygon = new Polygon();
         public Form2(ref PointF[] pointFs)
         {
             InitializeComponent();
-            this.pointFs = pointFs;
+
         }
 
 
@@ -47,14 +50,30 @@ namespace laba_8
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int x = Convert.ToInt32(textBox1.Text);
+            int y = Convert.ToInt32(textBox2.Text);
+
+            pointFs[n].X = x;
+            pointFs[n].Y = y;
             
-            Polygon po = new Polygon(pointFs);
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            polygon = new Polygon(pointFs);
+            polygon.Draw();
+            ShapeContainer.AddFigure(polygon);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            r = Convert.ToInt32(textBoxN.Text);
+            pointFs = new PointF[r];
+        }
 
         private void textBoxN_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
