@@ -23,7 +23,7 @@ namespace laba_8
 
             }
 
-            public virtual void MoveTo(int x, int y)
+            public virtual void MoveTo(int x, int y, Figure figure)
             {
                 this.x = x;
                 this.y = y;

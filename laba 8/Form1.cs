@@ -25,8 +25,8 @@ namespace laba_8
         Bitmap bitmap; 
         Pen pen = new Pen(Color.Black, 5);
         Rectangle re = new Rectangle();
-        List<Rectangle> ListOfRec = new List<Rectangle>();
-        List<Square> ListOfSqu = new List<Square>();
+        List<Figure> ListOfR = new List<Figure>();
+
 
         public Form1()
         {
@@ -89,12 +89,12 @@ namespace laba_8
 
                 if (RectagleCheck.Checked == true)
                 {
-                    Rectangle re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
+                    re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                     re.Draw();
                     ShapeContainer.AddFigure(re);
                     
-                    ListOfRec.Add(re);
-                    comboBox1.DataSource = ListOfRec;
+                    ListOfR.Add(re);
+                    comboBox1.DataSource = ListOfR;
                     comboBox1.DisplayMember = "Rectangle";
                     comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             }
@@ -109,12 +109,10 @@ namespace laba_8
                 Square sq = new Square(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 ShapeContainer.AddFigure(sq);
                 sq.Draw();
-
-                ListOfRec.Add(sq);
-                comboBox1.DataSource = ListOfSqu;
-                comboBox1.DisplayMember = "Square";
+                ListOfR.Add(sq);
+                comboBox1.DataSource = ListOfR;
+                comboBox1.DisplayMember = "Rectangle";
                 comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-
             }
 
 
@@ -178,16 +176,9 @@ namespace laba_8
 
         private void button2_Click( object sender, EventArgs e)
         {
-            if (RectagleCheck.Checked == true)
-            {
+
                 DeleteF((Figure)comboBox1.SelectedItem, false);
-                ListOfRec.Remove((Rectangle)comboBox1.SelectedItem);
-            }
-            if (checkBoxSquare.Checked == true)
-            {
-                DeleteF((Figure)comboBox1.SelectedItem, false);
-                ListOfSqu.Remove((Square)comboBox1.SelectedItem);
-            }
+
         }
 
         private void checkBoxSquare_CheckedChanged(object sender, EventArgs e)
@@ -257,7 +248,7 @@ namespace laba_8
         {
             if (RectagleCheck.Checked == true)
             {
-                re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text));
+                re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
             }
         }
 

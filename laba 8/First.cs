@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace laba_8
 {
@@ -31,15 +32,15 @@ namespace laba_8
          this.w = 0;
          this.h = 0;
          }
-        public override void MoveTo(int x, int y)
+        public override void MoveTo(int x, int y, Figure figure)
         {
 
             if (!((this.x + x < 0 && this.y + y < 0) || (this.y + y < 0) || (this.x + x > Init.pictureBox.Width && this.y + y < 0) || (this.x + this.w + x > Init.pictureBox.Width) || (this.x + x > Init.pictureBox.Width && this.y + y > Init.pictureBox.Height) || (this.y + this.h + y > Init.pictureBox.Height) || (this.x + x < 0 && this.y + y > Init.pictureBox.Height) || (this.x + x < 0)))
             {
                 this.x += x;
                 this.y += y;
-                this.DeleteF(this, false);
-                this.Draw();
+                DeleteF(figure, false);
+                Draw();
             }
         }
 
