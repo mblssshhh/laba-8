@@ -19,7 +19,6 @@ namespace laba_8
         {
             InitializeComponent();
             this.pointFs = pointFs;
-            
         }
 
 
@@ -54,6 +53,11 @@ namespace laba_8
 
 
         private void textBoxN_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

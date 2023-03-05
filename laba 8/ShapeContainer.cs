@@ -15,7 +15,9 @@ namespace laba_8
         }
         public static void AddFigure(Figure figure)
         {
+            figureList = new List<Figure>();
             figureList.Add(figure);
         }
     }
+
 }

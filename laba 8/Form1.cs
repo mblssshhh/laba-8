@@ -1,9 +1,13 @@
-﻿using System;
+﻿using laba_8;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,12 +19,13 @@ namespace laba_8
 
     public partial class Form1 : Form
     {
+
+
         Bitmap bitmap; //= new Bitmap(pictureBox.ClientSize.Width, pictureBox.ClientSize.Height);
         Pen pen = new Pen(Color.Black, 5);
-        ShapeContainer shapeContainer;
         PointF[] pointFs;
         Polygon polygon;
-   
+       
         public Form1()
         {
             InitializeComponent();
@@ -29,10 +34,42 @@ namespace laba_8
             Init.bitmap = this.bitmap;
             Init.pictureBox = pictureBox;
             Init.pen = this.pen;
-            ShapeContainer shapeContainer = new ShapeContainer();
-            
         }
 
+
+    public void DeleteF(Figure figure, bool flag = true)
+        {
+            if (flag == true)
+            {
+                Graphics g = Graphics.FromImage(Init.bitmap);
+             ShapeContainer.figureList.Remove(figure);
+             this.Clear();
+             Init.pictureBox.Image = Init.bitmap;
+             foreach (Figure f in ShapeContainer.figureList)
+             {
+             f.Draw();
+             }
+            }
+             else
+             {
+                Graphics g = Graphics.FromImage(Init.bitmap);
+                 ShapeContainer.figureList.Remove(figure);
+                 this.Clear();
+                 pictureBox.Image = Init.bitmap;
+                 foreach (Figure f in ShapeContainer.figureList)
+                     {
+                     f.Draw();
+                     }
+                 ShapeContainer.figureList.Add(figure);
+             }
+        }
+
+
+        public void Clear()
+        {
+            Graphics g = Graphics.FromImage(Init.bitmap);
+            g.Clear(Color.White);
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -44,16 +81,19 @@ namespace laba_8
 
         }
 
-       
+        
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (RectagleCheck.Checked == true)
-            {
-                Rectangle re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
-                ShapeContainer.AddFigure(re);
-                re.Draw();
-            }
+                if (RectagleCheck.Checked == true)
+                {
+                    Rectangle re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
+                    re.Draw();
+                    ShapeContainer.AddFigure(re);
+
+                }
+            
+
 
 
 
@@ -63,7 +103,7 @@ namespace laba_8
                 Square sq = new Square(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 ShapeContainer.AddFigure(sq);
                 sq.Draw();
-                 
+                
             }
 
 
@@ -71,6 +111,7 @@ namespace laba_8
             if (checkBoxElips.Checked == true)
             {
                 Elips el = new Elips(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
+                ShapeContainer.AddFigure(el);
                 el.Draw();
             }
 
@@ -79,6 +120,7 @@ namespace laba_8
             if (checkBoxCircle.Checked == true)
             {
                 Circle ci = new Circle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
+                ShapeContainer.AddFigure(ci);
                 ci.Draw();
             }
 
@@ -89,19 +131,11 @@ namespace laba_8
                 
             } 
             
-
-
-
-            /*if (checkBoxTriangle.Checked == true)
-            {
-                Rectangle r = new Rectangle();
-                r.Draw(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
-            }*/
             
-
         }
 
-    private void textBoxX_TextChanged(object sender, EventArgs e)
+
+        private void textBoxX_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -131,9 +165,12 @@ namespace laba_8
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click( object sender, EventArgs e)
         {
-            pictureBox.Image = null;
+            if (RectagleCheck.Checked == true)
+            {
+                //DeleteF(re, false);
+            }
         }
 
         private void checkBoxSquare_CheckedChanged(object sender, EventArgs e)
@@ -157,10 +194,9 @@ namespace laba_8
             {
                 Form ifrm = new Form2(ref pointFs);
                 ifrm.Show();
-                polygon = new Polygon(pointFs);
+                /*polygon = new Polygon(pointFs);
                 polygon.Draw();
-                ShapeContainer.AddFigure(polygon);
-
+                ShapeContainer.AddFigure(polygon);*/
             }
             
         }
@@ -178,12 +214,37 @@ namespace laba_8
 
         private void buttonMy_Click(object sender, EventArgs e)
         {
-           /* Circle ci = new Circle();
-            Rectangle re = new Rectangle();
-            ci.Draw(100, 100, 40, 40);
-            ci.Draw(200, 100, 40, 40);
-            re.Draw(85, 50, 180, 50);
-           */
+            Circle ci1 = new Circle(100, 100, 40);
+            Circle ci2 = new Circle(200, 100, 40);
+            Rectangle re = new Rectangle(100, 50, 145, 50);
+
+            ci1.Draw();
+            ci2.Draw();
+            re.Draw();
+           
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void move1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void move2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void moveBut_Click(object sender, EventArgs e)
+        {
+            if (RectagleCheck.Checked == true)
+            {
+                //re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text));
+            }
         }
     }
 }

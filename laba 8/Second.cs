@@ -24,10 +24,4 @@ namespace laba_8
         }
 
     }
-
-
-   /* public class Triangle : Polygon
-    {
-
-    } */
 }
