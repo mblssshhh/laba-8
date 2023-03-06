@@ -17,10 +17,13 @@ namespace laba_8
     {
         public static PointF[] pointFs;
         public static int x, y, n = 0, r;
-        static Polygon polygon = new Polygon();
-        public Form2(ref PointF[] pointFs)
+        
+        public static Polygon polygon;
+        public Form2(ref PointF[] pointFs, ref Polygon polygon)
         {
             InitializeComponent();
+            //this.polygon = polygon;
+           
 
         }
 
@@ -63,9 +66,11 @@ namespace laba_8
         private void button3_Click(object sender, EventArgs e)
         {
             polygon = new Polygon(pointFs);
-
             polygon.Draw();
             ShapeContainer.AddFigure(polygon);
+            
+            
+
         }
 
         private void button2_Click(object sender, EventArgs e)

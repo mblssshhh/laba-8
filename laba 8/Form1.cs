@@ -26,7 +26,9 @@ namespace laba_8
         Pen pen = new Pen(Color.Black, 5);
         Rectangle re = new Rectangle();
         List<Figure> ListOfF = new List<Figure>();
-
+        private Polygon polygon;
+        ShapeContainer shapeContainer;
+        MyFigure fi = new MyFigure();
 
         public Form1()
         {
@@ -36,6 +38,7 @@ namespace laba_8
             Init.bitmap = this.bitmap;
             Init.pictureBox = pictureBox;
             Init.pen = this.pen;
+            shapeContainer = new ShapeContainer();
         }
 
 
@@ -108,12 +111,13 @@ namespace laba_8
 
 
 
-            if (checkBoxPolygon.Checked == true)
+            if (checkBox1.Checked == true)
             {
-                
-            } 
-            
-            
+                fi = new MyFigure(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
+                fi.Draw();
+            }
+
+
         }
 
 
@@ -151,6 +155,7 @@ namespace laba_8
         {
             Figure figu = (Figure)comboBox1.SelectedItem;
             figu.DeleteF(figu);
+
             comboBox1.Items.Remove(comboBox1.SelectedItem);
         }
 
@@ -173,17 +178,18 @@ namespace laba_8
         {
             if (checkBoxPolygon.Checked == true)
             {
-                Form ifrm = new Form2(ref Form2.pointFs);
-                ifrm.Show();
+                Form ifrm = new Form2(ref Form2.pointFs, ref polygon);
+
+                ifrm.ShowDialog();
+                ShapeContainer.AddFigure(polygon);
+                comboBox1.Items.Add(Form2.polygon);
+
             }
             
         }
 
 
-        private void checkBoxTriangle_CheckedChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -192,18 +198,9 @@ namespace laba_8
 
         private void buttonMy_Click(object sender, EventArgs e)
         {
-            int x = 100;
-            int y = 100;
-            int w = 100;
-            int h = 100;
-            Circle ci1 = new Circle((x + w) - w / 3, y/18 + h, w / 3);
-            Circle ci2 = new Circle(x, y/18 + h, w / 3);
-            Rectangle re = new Rectangle(x, y/2, w, h/2);
 
-            ci1.Draw();
-            ci2.Draw();
-            re.Draw();
-           
+            fi.DrawMy();
+
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -224,11 +221,21 @@ namespace laba_8
         private void moveBut_Click(object sender, EventArgs e)
         {
             Figure figu = (Figure)comboBox1.SelectedItem;
-                figu.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+            figu.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+            if (checkBoxPolygon.Checked == true)
+            {
+                Figure pol = (Figure)comboBox1.SelectedItem;
+                pol.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+            }
            
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

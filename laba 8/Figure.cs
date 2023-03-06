@@ -54,6 +54,7 @@ namespace laba_8
                 Init.pictureBox.Image = Init.bitmap;
                 foreach (Figure f in ShapeContainer.figureList)
                 {
+                    if(f!=null)
                     f.Draw();
                 }
                 ShapeContainer.figureList.Add(figure);

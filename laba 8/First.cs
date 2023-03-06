@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace laba_8
 {
@@ -76,9 +77,10 @@ namespace laba_8
             g.DrawEllipse(line, x, y, w, h);
             Init.pictureBox.Image = Init.bitmap;
         }
+
     }
 
-    class Polygon : Figure
+    public class Polygon : Figure
     {
         public PointF[] pointFs;
 
@@ -101,6 +103,30 @@ namespace laba_8
             g.DrawPolygon(pol, pointFs);
             Init.pictureBox.Image = Init.bitmap;
         }
+        public override void MoveTo(int x, int y, Figure figure)
+        {
+            bool fl = true;
+            for (int i = 0; i < pointFs.LongLength; i++)
+            {
+                if ((pointFs[i].X + x < 0 && pointFs[i].Y + y < 0) || (pointFs[i].Y + y < 0) || (pointFs[i].X + x > Init.pictureBox.Width && pointFs[i].Y + y < 0) || (pointFs[i].X + this.w + x > Init.pictureBox.Width) || (pointFs[i].X + x > Init.pictureBox.Width && pointFs[i].Y + y > Init.pictureBox.Height) || (pointFs[i].Y + this.h + y > Init.pictureBox.Height) || (pointFs[i].X + x < 0 && pointFs[i].Y + y > Init.pictureBox.Height) || (pointFs[i].X + x < 0))
+                {
+
+                    fl = false; break;
+                }
+            }
+            if (fl == true)
+            {
+                for (int i = 0; i < pointFs.LongLength; i++)
+                {
+                    this.pointFs[i].X += x;
+                    this.pointFs[i].Y += y;
+                }
+                DeleteF(this, false);
+                Draw();
+            }
+        }
+        
+
     }
 
 }
