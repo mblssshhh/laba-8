@@ -55,20 +55,31 @@ namespace laba_8
 
             pointFs[n].X = x;
             pointFs[n].Y = y;
+
+            n++;
             
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             polygon = new Polygon(pointFs);
+
             polygon.Draw();
             ShapeContainer.AddFigure(polygon);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            r = Convert.ToInt32(textBoxN.Text);
-            pointFs = new PointF[r];
+            if (textBoxN.Text != "")
+            {
+
+
+
+                r = Convert.ToInt32(textBoxN.Text);
+                pointFs = new PointF[r];
+                button2.Visible = false;
+                textBoxN.Enabled = false;
+            }
         }
 
         private void textBoxN_TextChanged(object sender, EventArgs e)

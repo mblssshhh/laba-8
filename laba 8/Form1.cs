@@ -39,39 +39,10 @@ namespace laba_8
         }
 
 
-    public void DeleteF(Figure figure, bool flag = true)
-        {
-            if (flag == true)
-            {
-                Graphics g = Graphics.FromImage(Init.bitmap);
-             ShapeContainer.figureList.Remove(figure);
-             this.Clear();
-             Init.pictureBox.Image = Init.bitmap;
-             foreach (Figure f in ShapeContainer.figureList)
-             {
-             f.Draw();
-             }
-            }
-             else
-             {
-                Graphics g = Graphics.FromImage(Init.bitmap);
-                 ShapeContainer.figureList.Remove(figure);
-                 this.Clear();
-                 pictureBox.Image = Init.bitmap;
-                 foreach (Figure f in ShapeContainer.figureList)
-                     {
-                     f.Draw();
-                     }
-                 ShapeContainer.figureList.Add(figure);
-             }
-        }
+    
 
 
-        public void Clear()
-        {
-            Graphics g = Graphics.FromImage(Init.bitmap);
-            g.Clear(Color.White);
-        }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -92,9 +63,10 @@ namespace laba_8
                     re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                     re.Draw();
                     ShapeContainer.AddFigure(re);
-                    ListOfF.Add(re);
-                    comboBox1.DataSource = ListOfF;
-                    comboBox1.DisplayMember = "Rectangle";
+                    comboBox1.Items.Add(re);
+                    //ListOfF.Add(re);
+                    //comboBox1.DataSource = ListOfF;
+                    //comboBox1.DisplayMember = "Rectangle";
             }
             
 
@@ -107,9 +79,10 @@ namespace laba_8
                 Square sq = new Square(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 sq.Draw();
                 ShapeContainer.AddFigure(sq);
-                ListOfF.Add(sq);
-                comboBox1.DataSource = ListOfF;
-                comboBox1.DisplayMember = "Square";
+                comboBox1.Items.Add(sq);
+                //ListOfF.Add(sq);
+                //comboBox1.DataSource = ListOfF;
+                //comboBox1.DisplayMember = "Square";
                 
             }
 
@@ -120,6 +93,7 @@ namespace laba_8
                 Elips el = new Elips(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                 ShapeContainer.AddFigure(el);
                 el.Draw();
+                comboBox1.Items.Add(el);
             }
 
 
@@ -129,6 +103,7 @@ namespace laba_8
                 Circle ci = new Circle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 ShapeContainer.AddFigure(ci);
                 ci.Draw();
+                comboBox1.Items.Add(ci);
             }
 
 
@@ -174,8 +149,9 @@ namespace laba_8
 
         private void button2_Click( object sender, EventArgs e)
         {
-
-                DeleteF((Figure)comboBox1.SelectedItem, false);
+            Figure figu = (Figure)comboBox1.SelectedItem;
+            figu.DeleteF(figu);
+            comboBox1.Items.Remove(comboBox1.SelectedItem);
         }
 
         private void checkBoxSquare_CheckedChanged(object sender, EventArgs e)
@@ -247,10 +223,9 @@ namespace laba_8
 
         private void moveBut_Click(object sender, EventArgs e)
         {
-            if (RectagleCheck.Checked == true)
-            {
-                re.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
-            }
+            Figure figu = (Figure)comboBox1.SelectedItem;
+                figu.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+           
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

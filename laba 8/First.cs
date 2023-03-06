@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace laba_8
 {
-    static class Init
+    public static class Init
     {
         public static Bitmap bitmap;
         public static PictureBox pictureBox;
@@ -39,7 +39,7 @@ namespace laba_8
             {
                 this.x += x;
                 this.y += y;
-                DeleteF(figure, false);
+                DeleteF(this, false);
                 Draw();
             }
         }
