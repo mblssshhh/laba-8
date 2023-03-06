@@ -25,7 +25,7 @@ namespace laba_8
         Bitmap bitmap; 
         Pen pen = new Pen(Color.Black, 5);
         Rectangle re = new Rectangle();
-        List<Figure> ListOfR = new List<Figure>();
+        List<Figure> ListOfF = new List<Figure>();
 
 
         public Form1()
@@ -92,11 +92,9 @@ namespace laba_8
                     re = new Rectangle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                     re.Draw();
                     ShapeContainer.AddFigure(re);
-                    
-                    ListOfR.Add(re);
-                    comboBox1.DataSource = ListOfR;
+                    ListOfF.Add(re);
+                    comboBox1.DataSource = ListOfF;
                     comboBox1.DisplayMember = "Rectangle";
-                    comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             }
             
 
@@ -107,12 +105,12 @@ namespace laba_8
             { 
                 
                 Square sq = new Square(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
-                ShapeContainer.AddFigure(sq);
                 sq.Draw();
-                ListOfR.Add(sq);
-                comboBox1.DataSource = ListOfR;
-                comboBox1.DisplayMember = "Rectangle";
-                comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+                ShapeContainer.AddFigure(sq);
+                ListOfF.Add(sq);
+                comboBox1.DataSource = ListOfF;
+                comboBox1.DisplayMember = "Square";
+                
             }
 
 
@@ -178,7 +176,6 @@ namespace laba_8
         {
 
                 DeleteF((Figure)comboBox1.SelectedItem, false);
-
         }
 
         private void checkBoxSquare_CheckedChanged(object sender, EventArgs e)
@@ -219,9 +216,13 @@ namespace laba_8
 
         private void buttonMy_Click(object sender, EventArgs e)
         {
-            Circle ci1 = new Circle(100, 100, 40);
-            Circle ci2 = new Circle(200, 100, 40);
-            Rectangle re = new Rectangle(100, 50, 145, 50);
+            int x = 100;
+            int y = 100;
+            int w = 100;
+            int h = 100;
+            Circle ci1 = new Circle((x + w) - w / 3, y/18 + h, w / 3);
+            Circle ci2 = new Circle(x, y/18 + h, w / 3);
+            Rectangle re = new Rectangle(x, y/2, w, h/2);
 
             ci1.Draw();
             ci2.Draw();

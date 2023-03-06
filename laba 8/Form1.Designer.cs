@@ -56,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(586, 126);
+            this.label1.Location = new System.Drawing.Point(601, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(16, 16);
             this.label1.TabIndex = 1;
@@ -66,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(586, 154);
+            this.label2.Location = new System.Drawing.Point(601, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 16);
             this.label2.TabIndex = 2;
@@ -75,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(586, 188);
+            this.label3.Location = new System.Drawing.Point(601, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 16);
             this.label3.TabIndex = 3;
@@ -85,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(586, 216);
+            this.label4.Location = new System.Drawing.Point(601, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 16);
             this.label4.TabIndex = 4;
@@ -93,7 +93,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(618, 241);
+            this.button1.Location = new System.Drawing.Point(633, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 5;
@@ -103,7 +103,7 @@
             // 
             // textBoxX
             // 
-            this.textBoxX.Location = new System.Drawing.Point(607, 123);
+            this.textBoxX.Location = new System.Drawing.Point(622, 12);
             this.textBoxX.Name = "textBoxX";
             this.textBoxX.Size = new System.Drawing.Size(100, 22);
             this.textBoxX.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             // textBoxY
             // 
-            this.textBoxY.Location = new System.Drawing.Point(607, 151);
+            this.textBoxY.Location = new System.Drawing.Point(622, 40);
             this.textBoxY.Name = "textBoxY";
             this.textBoxY.Size = new System.Drawing.Size(100, 22);
             this.textBoxY.TabIndex = 7;
@@ -141,7 +141,7 @@
             // 
             // textBoxW
             // 
-            this.textBoxW.Location = new System.Drawing.Point(607, 185);
+            this.textBoxW.Location = new System.Drawing.Point(622, 74);
             this.textBoxW.Name = "textBoxW";
             this.textBoxW.Size = new System.Drawing.Size(100, 22);
             this.textBoxW.TabIndex = 10;
@@ -149,7 +149,7 @@
             // 
             // textBoxH
             // 
-            this.textBoxH.Location = new System.Drawing.Point(607, 213);
+            this.textBoxH.Location = new System.Drawing.Point(622, 102);
             this.textBoxH.Name = "textBoxH";
             this.textBoxH.Size = new System.Drawing.Size(100, 22);
             this.textBoxH.TabIndex = 11;
@@ -157,7 +157,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(618, 270);
+            this.button2.Location = new System.Drawing.Point(633, 159);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 12;
@@ -211,7 +211,7 @@
             // 
             // buttonMy
             // 
-            this.buttonMy.Location = new System.Drawing.Point(618, 299);
+            this.buttonMy.Location = new System.Drawing.Point(633, 188);
             this.buttonMy.Name = "buttonMy";
             this.buttonMy.Size = new System.Drawing.Size(75, 23);
             this.buttonMy.TabIndex = 18;
@@ -222,7 +222,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(482, 370);
+            this.label5.Location = new System.Drawing.Point(574, 235);
             this.label5.MinimumSize = new System.Drawing.Size(100, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
@@ -232,7 +232,7 @@
             // 
             // move1
             // 
-            this.move1.Location = new System.Drawing.Point(530, 368);
+            this.move1.Location = new System.Drawing.Point(622, 233);
             this.move1.Name = "move1";
             this.move1.Size = new System.Drawing.Size(100, 22);
             this.move1.TabIndex = 20;
@@ -240,7 +240,7 @@
             // 
             // move2
             // 
-            this.move2.Location = new System.Drawing.Point(530, 396);
+            this.move2.Location = new System.Drawing.Point(622, 261);
             this.move2.Name = "move2";
             this.move2.Size = new System.Drawing.Size(100, 22);
             this.move2.TabIndex = 21;
@@ -248,7 +248,7 @@
             // 
             // moveBut
             // 
-            this.moveBut.Location = new System.Drawing.Point(545, 424);
+            this.moveBut.Location = new System.Drawing.Point(637, 289);
             this.moveBut.Name = "moveBut";
             this.moveBut.Size = new System.Drawing.Size(75, 23);
             this.moveBut.TabIndex = 22;
@@ -259,7 +259,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(598, 25);
+            this.comboBox1.Location = new System.Drawing.Point(413, 338);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 23;
