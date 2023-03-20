@@ -9,7 +9,7 @@ namespace laba_8
 {
     public class Circle : Elips
     {
-        public Circle(int x, int y, int w) : base(x, y, w, w)
+        public Circle(int x, int y, int w) : base(x, y, w, w, "")
         {
 
         }
@@ -18,7 +18,7 @@ namespace laba_8
     public class Square : Rectangle
     {
 
-        public Square(int x, int y, int w) : base(x, y, w, w)
+        public Square(int x, int y, int w) : base(x, y, w, w, "")
         { 
         
         }

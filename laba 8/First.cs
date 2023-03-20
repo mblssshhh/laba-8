@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
@@ -19,7 +20,7 @@ namespace laba_8
     }
     public class Rectangle : Figure
     {
-        public Rectangle(int x, int y, int w, int h)
+        public Rectangle(int x, int y, int w, int h, string name)
          {
          this.x = x;
          this.y = y;
@@ -67,8 +68,9 @@ namespace laba_8
                 Draw();
             }
         }
-        public Elips(int x, int y, int w, int h)
+        public Elips(int x, int y, int w, int h, string name)
         {
+            this.name = name;
             this.x = x;
             this.y = y;
             this.w = w;

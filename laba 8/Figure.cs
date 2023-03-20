@@ -18,6 +18,7 @@ namespace laba_8
             public int w;
             public int h;
             public int n;
+            public string name;
 
 
             public virtual void Draw()
