@@ -44,7 +44,6 @@
             this.checkBoxElips = new System.Windows.Forms.CheckBox();
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
             this.checkBoxPolygon = new System.Windows.Forms.CheckBox();
-            this.buttonMy = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.move1 = new System.Windows.Forms.TextBox();
             this.move2 = new System.Windows.Forms.TextBox();
@@ -210,16 +209,6 @@
             this.checkBoxPolygon.UseVisualStyleBackColor = true;
             this.checkBoxPolygon.CheckedChanged += new System.EventHandler(this.checkBoxPolygon_CheckedChanged);
             // 
-            // buttonMy
-            // 
-            this.buttonMy.Location = new System.Drawing.Point(633, 188);
-            this.buttonMy.Name = "buttonMy";
-            this.buttonMy.Size = new System.Drawing.Size(75, 23);
-            this.buttonMy.TabIndex = 18;
-            this.buttonMy.Text = "MyPicture";
-            this.buttonMy.UseVisualStyleBackColor = true;
-            this.buttonMy.Click += new System.EventHandler(this.buttonMy_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -288,7 +277,6 @@
             this.Controls.Add(this.move2);
             this.Controls.Add(this.move1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.buttonMy);
             this.Controls.Add(this.checkBoxPolygon);
             this.Controls.Add(this.checkBoxCircle);
             this.Controls.Add(this.checkBoxElips);
@@ -332,7 +320,6 @@
         private System.Windows.Forms.CheckBox checkBoxElips;
         private System.Windows.Forms.CheckBox checkBoxCircle;
         private System.Windows.Forms.CheckBox checkBoxPolygon;
-        private System.Windows.Forms.Button buttonMy;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox move1;
         private System.Windows.Forms.TextBox move2;

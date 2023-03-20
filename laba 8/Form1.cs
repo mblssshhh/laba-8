@@ -21,7 +21,7 @@ namespace laba_8
     public partial class Form1 : Form
     {
 
-
+        bool flag = false;
         Bitmap bitmap; 
         Pen pen = new Pen(Color.Black, 5);
         Rectangle re = new Rectangle();
@@ -43,7 +43,7 @@ namespace laba_8
 
 
     
-
+        
 
         
 
@@ -115,6 +115,9 @@ namespace laba_8
             {
                 fi = new MyFigure(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                 fi.Draw();
+                ShapeContainer.AddFigure(fi);
+                comboBox1.Items.Add(fi);
+                
             }
 
 
@@ -178,11 +181,18 @@ namespace laba_8
         {
             if (checkBoxPolygon.Checked == true)
             {
+                
                 Form ifrm = new Form2(ref Form2.pointFs, ref polygon);
+                
 
                 ifrm.ShowDialog();
-                ShapeContainer.AddFigure(polygon);
-                comboBox1.Items.Add(Form2.polygon);
+                if (Form2.pointFs.Length != 0)
+                {
+                    ShapeContainer.AddFigure(polygon);
+                    comboBox1.Items.Add(Form2.polygon);
+                }
+                
+
 
             }
             
@@ -199,7 +209,7 @@ namespace laba_8
         private void buttonMy_Click(object sender, EventArgs e)
         {
 
-            fi.DrawMy();
+
 
         }
 

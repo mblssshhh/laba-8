@@ -73,6 +73,7 @@ namespace laba_8
 
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBoxN.Text != "")
@@ -84,6 +85,7 @@ namespace laba_8
                 pointFs = new PointF[r];
                 button2.Visible = false;
                 textBoxN.Enabled = false;
+                n = 0;
             }
         }
 
