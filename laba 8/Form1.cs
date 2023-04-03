@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static laba_8.Form1;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace laba_8
 {
@@ -27,9 +28,11 @@ namespace laba_8
         private Polygon polygon;
         ShapeContainer shapeContainer;
         MyFigure fi = new MyFigure();
-
+        bool flag = true;
+        string name;
         private Stack<Operator> operators = new Stack<Operator>();
         private Stack<Operand> operands = new Stack<Operand>();
+
 
         public Form1()
         {
@@ -66,6 +69,8 @@ namespace laba_8
             public EmptyOperatorMethod operatorMethod = null;
             public BinaryOperatorMethod binaryOperator = null;
             public TrinaryOperatorMethod trinaryOperator = null;
+            public readonly char symboloperands;
+
             public Operator(EmptyOperatorMethod operatorMethod, char symbolOperator)
             {
                 this.operatorMethod = operatorMethod;
@@ -85,6 +90,7 @@ namespace laba_8
             {
                 this.symbolOperator = symbolOperator;
             }
+
         }
 
         public static class OperatorContainer
@@ -95,7 +101,6 @@ namespace laba_8
                 operators.Add(new Operator('C'));
                 operators.Add(new Operator('M'));
                 operators.Add(new Operator('D'));
-                operators.Add(new Operator(';'));
                 operators.Add(new Operator(','));
                 operators.Add(new Operator('('));
                 operators.Add(new Operator(')'));
@@ -162,7 +167,7 @@ namespace laba_8
             if (checkBoxElips.Checked == true)
             {
                 
-                Elips el = new Elips(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text), "");
+                Elips el = new Elips("", Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
                 ShapeContainer.AddFigure(el);
                 el.Draw();
                 comboBox1.Items.Add(el);
@@ -172,7 +177,7 @@ namespace laba_8
 
             if (checkBoxCircle.Checked == true)
             {
-                Circle ci = new Circle(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
+                Circle ci = new Circle("",Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text));
                 ShapeContainer.AddFigure(ci);
                 ci.Draw();
                 comboBox1.Items.Add(ci);
@@ -182,7 +187,7 @@ namespace laba_8
 
             if (checkBox1.Checked == true)
             {
-                fi = new MyFigure(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text));
+                fi = new MyFigure(Convert.ToInt32(textBoxX.Text), Convert.ToInt32(textBoxY.Text), Convert.ToInt32(textBoxW.Text), Convert.ToInt32(textBoxH.Text), "");
                 fi.Draw();
                 ShapeContainer.AddFigure(fi);
                 comboBox1.Items.Add(fi);
@@ -299,13 +304,13 @@ namespace laba_8
 
         private void moveBut_Click(object sender, EventArgs e)
         {
-            Figure figu = (Figure)comboBox1.SelectedItem;
-            figu.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
-            if (checkBoxPolygon.Checked == true)
-            {
-                Figure pol = (Figure)comboBox1.SelectedItem;
-                pol.MoveTo(Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
-            }
+            //Figure figu = (Figure)comboBox1.SelectedItem;
+            //figu.MoveTo("", Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+            //if (checkBoxPolygon.Checked == true)
+            //{
+            //    Figure pol = (Figure)comboBox1.SelectedItem;
+            //    pol.MoveTo("", Convert.ToInt32(move1.Text), Convert.ToInt32(move2.Text), (Figure)comboBox1.SelectedItem);
+            //}
            
         }
 
@@ -329,83 +334,133 @@ namespace laba_8
                 return false;
             }
         }
-        Figure figure;
+
         private void SelectingPerformingOperation(Operator op)
         {
-            if (op.symbolOperator == 'C')
+            if (textBox1.Text[0] == 'C')
             {
-                string name = Convert.ToString(operands.Pop().value);
-                string x = Convert.ToString(operands.Pop().value);
-                string y = Convert.ToString(operands.Pop().value);
-                string w = Convert.ToString(operands.Pop().value);
-                string h = Convert.ToString(operands.Pop().value);
-                Elips el = new Elips(Convert.ToInt32(x), Convert.ToInt32(y), Convert.ToInt32(w), Convert.ToInt32(h), name);
-                ShapeContainer.AddFigure(el);
-                comboBox1.Items.Add(el);
-                this.figure = el;
-                
-                op = new Operator(this.figure.Draw, 'C');
-                ShapeContainer.AddFigure(figure);
-                comboBox1.Items.Add(figure.name);
-                op.operatorMethod();
-            }
-        }
-            bool flag = true;
+                int w = Convert.ToInt32(Convert.ToString(operands.Pop().value));
 
-            private void textBox1_KeyDown(object sender, KeyEventArgs e)
+                int y = Convert.ToInt32(Convert.ToString(operands.Pop().value));
+                int x = Convert.ToInt32(Convert.ToString(operands.Pop().value));
+                if (this.operands.Count == 1)
+                {
+                    string name = Convert.ToString(operands.Pop().value);
+
+
+                        Circle C = new Circle(name, x, y, w);
+                        op = new Operator(C.Draw, 'C');
+                        ShapeContainer.AddFigure(C);
+                        richTextBox1.Text += "Circle: " + name + " spawn\n";
+                        op.operatorMethod();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("params > 4\n");
+                }
+            }
+            if (textBox1.Text[0] == 'M')
             {
-            string textBoxInputString = textBox1.Text;
+                    int y = Convert.ToInt32(Convert.ToString(operands.Pop().value));
+                    int x = Convert.ToInt32(Convert.ToString(operands.Pop().value));
+                    name = Convert.ToString(operands.Pop().value);
+                    string movename = name + ":" + " replace\n";
+                    if (ShapeContainer.FindFigure(name) == null)
+                    {
+                        MessageBox.Show("Error!\n");
+                        richTextBox1.Text += "Repite command\n";
+                    }
+                    else
+                    {
+                        ShapeContainer.FindFigure(name).MoveTo(x, y);
+                        richTextBox1.Text += movename;
+                    }
+            }
+            if (textBox1.Text[0] == 'D')
+            {
+                    name = Convert.ToString(operands.Pop().value);
+                    string deletename = name + ":" + " delete\n ";
+                    if (ShapeContainer.FindFigure(name) == null)
+                    {
+                        MessageBox.Show("Error!");
+                        richTextBox1.Text += "Repite command\n";
+                    }
+                    else
+                    {
+                        ShapeContainer.FindFigure(name).DeleteF(ShapeContainer.FindFigure(name), true);
+                        richTextBox1.Text += ShapeContainer.FindFigure(name) + deletename;
+                    }
+            }
+
+        }
+
+        public int ConvertCharToInt(object item)
+        {
+            return Convert.ToInt32(Convert.ToString(item));
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+            {
             if (e.KeyCode == Keys.Enter)
             {
-
-                for (int i = 0; i < textBoxInputString.Length; i++)
+                operators = new Stack<Operator>();
+                operands = new Stack<Operand>();
+                for (int i = 0; i < textBox1.Text.Length; i++)
                 {
-                    if (IsNotOperation(textBoxInputString[i]))
+                    if (IsNotOperation(textBox1.Text[i]))
                     {
-                        if (!(Char.IsDigit(textBoxInputString[i])))
+                        if (!(Char.IsDigit(textBox1.Text[i])))
                         {
-                            this.operands.Push(new Operand(textBoxInputString[i]));
+                            this.operands.Push(new Operand(textBox1.Text[i]));
                             continue;
                         }
-                        else if (Char.IsDigit(textBoxInputString[i]))
+                        else if (Char.IsDigit(textBox1.Text[i]))
                         {
-                            if (Char.IsDigit(textBoxInputString[i + 1]))
+                            if (flag)
                             {
-                                if (flag)
+                                this.operands.Push(new Operand(textBox1.Text[i]));
+                            }
+                            else
+                            {
+                                if (!(Char.IsDigit(textBox1.Text[i - 1])))
                                 {
-                                    this.operands.Push(new Operand(textBoxInputString[i]));
+                                    this.operands.Push(new Operand(ConvertCharToInt(textBox1.Text[i])));
+                                    continue;
                                 }
-                                this.operands.Push(new Operand(Convert.ToInt32((this.operands.Pop().value).ToString()) * 10 + Convert.ToInt32(textBoxInputString[i + 1])));
-                                flag = false;
-                                continue;
+                                this.operands.Push(new Operand(ConvertCharToInt(this.operands.Pop().value) * 10 + ConvertCharToInt(textBox1.Text[i])));
                             }
-                            else if ((textBoxInputString[i + 1] == ','
-                            || textBoxInputString[i + 1] == ')')
-                            && !(Char.IsDigit(textBoxInputString[i - 1])))
-                            {
-                                this.operands.Push(new Operand(Convert.ToInt32
-                                (textBoxInputString[i])));
-                                continue;
-                            }
-                        }
-                        
-
-
-                    }
-                    else if (textBoxInputString[i] == 'C')
-                    {
-                        if (this.operators.Count == 0)
-                        {
-                            this.operators.Push(OperatorContainer.FindOperator
-                            (textBoxInputString[i]));
+                            flag = false;
+                            continue;
                         }
                     }
-                    else if (textBoxInputString[i] == '(')
+                    else if (textBox1.Text[i] == ',')
                     {
-                        this.operators.Push(OperatorContainer.FindOperator
-                        (textBoxInputString[i]));
+                        flag = true;
+                        continue;
                     }
-                    else if (textBoxInputString[i] == ')')
+
+                    else if (textBox1.Text[i] == 'C')
+                    {
+                        this.operators.Push(OperatorContainer.FindOperator(textBox1.Text[i]));
+                        continue;
+                    }
+                    else if (textBox1.Text[i] == 'M')
+                    {
+                        this.operators.Push(OperatorContainer.FindOperator(textBox1.Text[i]));
+                        continue;
+                    }
+                    else if (textBox1.Text[i] == 'D')
+                    {
+                        this.operators.Push(OperatorContainer.FindOperator(textBox1.Text[i]));
+                        continue;
+                    }
+                    else if (textBox1.Text[i] == '(')
+                    {
+                        this.operators.Push(OperatorContainer.FindOperator(textBox1.Text[i]));
+                    }
+                    else if (textBox1.Text[i] == ')')
                     {
                         do
                         {
@@ -421,23 +476,28 @@ namespace laba_8
                         }
                         while (operators.Peek().symbolOperator != '(');
                     }
-
-
-
                 }
-
-
-
-                if (operators.Peek() != null)
+                try
                 {
                     this.SelectingPerformingOperation(operators.Peek());
-                }
-                else
+                } catch(Exception ex)
                 {
-                    MessageBox.Show("Введенной операции не существует");
+                    MessageBox.Show(ex.Message);
                 }
             }
-            }
+        }
+
+        
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

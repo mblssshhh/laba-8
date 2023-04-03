@@ -34,7 +34,7 @@ namespace laba_8
          this.w = 0;
          this.h = 0;
          }
-        public override void MoveTo(int x, int y, Figure figure)
+        public override void MoveTo(int x, int y)
         {
 
             if (!((this.x + x < 0 && this.y + y < 0) || (this.y + y < 0) || (this.x + x > Init.pictureBox.Width && this.y + y < 0) || (this.x + this.w + x > Init.pictureBox.Width) || (this.x + x > Init.pictureBox.Width && this.y + y > Init.pictureBox.Height) || (this.y + this.h + y > Init.pictureBox.Height) || (this.x + x < 0 && this.y + y > Init.pictureBox.Height) || (this.x + x < 0)))
@@ -57,7 +57,7 @@ namespace laba_8
 
     public class Elips : Figure
     {
-        public override void MoveTo(int x, int y, Figure figure)
+        public override void MoveTo(int x, int y)
         {
 
             if (!((this.x + x < 0 && this.y + y < 0) || (this.y + y < 0) || (this.x + x > Init.pictureBox.Width && this.y + y < 0) || (this.x + this.w + x > Init.pictureBox.Width) || (this.x + x > Init.pictureBox.Width && this.y + y > Init.pictureBox.Height) || (this.y + this.h + y > Init.pictureBox.Height) || (this.x + x < 0 && this.y + y > Init.pictureBox.Height) || (this.x + x < 0)))
@@ -68,13 +68,13 @@ namespace laba_8
                 Draw();
             }
         }
-        public Elips(int x, int y, int w, int h, string name)
+        public Elips(string name, int x, int y, int w, int h)
         {
-            this.name = name;
             this.x = x;
             this.y = y;
             this.w = w;
             this.h = h;
+            this.name = name;
         }
         public Elips()
         {
@@ -117,7 +117,7 @@ namespace laba_8
             g.DrawPolygon(pol, pointFs);
             Init.pictureBox.Image = Init.bitmap;
         }
-        public override void MoveTo(int x, int y, Figure figure)
+        public override void MoveTo(int x, int y)
         {
             bool fl = true;
             for (int i = 0; i < pointFs.LongLength; i++)

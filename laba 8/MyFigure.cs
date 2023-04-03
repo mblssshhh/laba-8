@@ -15,15 +15,16 @@ namespace laba_8
         {
         }
 
-        public MyFigure( int x, int y, int w, int h)
+        public MyFigure( int x, int y, int w, int h, string name)
         {
             this.x = x;
             this.y = y;
             this.w = w;
             this.h = h;
+            this.name = name;
         }
 
-        public override void MoveTo(int x, int y, Figure figure)
+        public override void MoveTo( int x, int y)
         {
 
             if (!((this.x + x < 0 && this.y + y < 0) || (this.y + y < 0) || (this.x + x > Init.pictureBox.Width && this.y + y < 0) || (this.x + this.w + x > Init.pictureBox.Width) || (this.x + x > Init.pictureBox.Width && this.y + y > Init.pictureBox.Height) || (this.y + this.h + y > Init.pictureBox.Height) || (this.x + x < 0 && this.y + y > Init.pictureBox.Height) || (this.x + x < 0)))

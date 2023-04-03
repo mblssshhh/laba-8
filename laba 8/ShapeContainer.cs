@@ -18,6 +18,17 @@ namespace laba_8
             
             figureList.Add(figure);
         }
+        public static Figure FindFigure(string name)
+        {
+            foreach (Figure figure in figureList)
+            {
+                if (figure.name == name)
+                {
+                    return figure;
+                }
+            }
+            return null;
+        }
     }
 
 }

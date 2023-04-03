@@ -9,7 +9,7 @@ namespace laba_8
 {
     public class Circle : Elips
     {
-        public Circle(int x, int y, int w) : base(x, y, w, w, "")
+        public Circle(string name, int x, int y, int w) : base(name, x, y, w, w)
         {
 
         }
